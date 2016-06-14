@@ -1,0 +1,24 @@
+{
+  "name": "ae-frontend-capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "http-server public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanE23/Front-End-Capstone.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlanE23/Front-End-Capstone/issues"
+  },
+  "homepage": "https://github.com/AlanE23/Front-End-Capstone#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {}
+}
