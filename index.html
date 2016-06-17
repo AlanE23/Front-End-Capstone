@@ -3,35 +3,66 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="">
+  <title>myFacester</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
-    <div ng-app="app">
-      <div ng-controller="MainCtrl as main">
+    <div class="container-fluid" id="mainBody">
+      <div ng-app="app">
+        <div ng-controller="MainCtrl as main">
 
-        <form ng-submit="main.create(main.users, main.message, main.images, main.timestamp)">
-          <input type="text" ng-model="main.users" placeholder="user name">
-          <input type="text" ng-model="main.message" placeholder="New Message">
-          <input type="text" ng-model="main.images" placeholder="image url">
-          <input type="text" ng-model="main.timestamp" placeholder="timestamp">
-          <button type="submit">Add Post</button>
-        </form>
+          <!-- Modal for creating new posts -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Create New Post</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <input type="text" ng-model="main.users" placeholder="user name">
+                    <input type="text" ng-model="main.message" placeholder="New Message">
+                    <input type="text" ng-model="main.images" placeholder="image url">
+                    <input type="text" ng-model="main.timestamp" placeholder="timestamp">
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button ng-click="main.submit()" class="btn btn-primary" data-dismiss="modal">Submit Post</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <h1>{{main.heading}}</h1>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Add New Post
+          </button>
 
-        <div ng-repeat="(id, posts) in main.data">
-          <ul>
-            <li>{{posts.users}}</li>
-            <li>{{posts.message}}</li>
-            <li>{{posts.timestamp}}</li>
-            <li><img ng-src="{{posts.images}}"></li>
-            <li><button type="click" ng-click="main.delete(id)">Delete</button></li>
-          </ul>
-        </div>
+          <!-- Logout Button -->
+          <button type="button" class="btn btn-danger btn-lg">
+            Logout
+          </button>
 
-      </div> <!-- main controller -->
-    </div> <!-- ng-app -->
+          <h1>{{main.heading}}</h1>
+          <div class="row">
+          <div ng-repeat="(id, posts) in main.data" class="col-md-4">
+            <ul>
+              <li>{{posts.users}}</li>
+              <li>{{posts.message}}</li>
+              <li>{{posts.timestamp}}</li>
+              <li><img ng-src="{{posts.images}}" class="pics"></li>
+              <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal">Edit</button></li>
+              <li><button type="click" ng-click="main.delete(id)">Delete</button></li>
+            </ul>
+          </div>
+          </div>
+
+        </div> <!-- main controller -->
+      </div> <!-- ng-app -->
+    </div>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
@@ -42,28 +73,3 @@
     <script src="main.js"></script>
   </body>
 </html>
-
-
-<!-- Button trigger modal -->
-        <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          Add New Post
-        </button>
- -->
-        <!-- Modal -->
-        <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Create New Post</h4>
-              </div>
-              <div class="modal-body">
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Create Post</button>
-              </div>
-            </div>
-          </div>
-        </div> -->

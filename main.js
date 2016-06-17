@@ -1,4 +1,4 @@
-const app = angular.module('app', ['angular.filter'])
+const app = angular.module('app', ['angular.filter', 'ngRoute'])
 
   .config(() => {
     firebase.initializeApp({
@@ -12,53 +12,122 @@ const app = angular.module('app', ['angular.filter'])
   .controller('MainCtrl', function ($scope, $timeout) {
     const main = this;
 
+    let editing = false;
+
+    let key;
+
     main.data = null;
 
-    main.heading = "Working Title";
+    main.heading = "myFacester";
 
     firebase.database().ref('/posts').on('value', (arg) => {
       main.data = arg.val();
       $timeout();
     })
 
+    main.submit = function () {
+      if (editing) {
+        editing = false;
+        main.update()
+      } else {
+        main.create()
+      }
+    }
+
     main.create = function () {
       firebase.database().ref(`/posts/`)
         .push({"users": main.users, "message": main.message, "images": main.images, "timestamp": main.timestamp})
-        // .then(() => main.users = '');
-        // .then(() => main.message = '');
-        // .then(() => main.images = '');
-        // .then(() => main.timestamp = '');
+        .then(() => {
+          main.users = '';
+          main.message = '';
+          main.images = '';
+          main.timestamp = '';
+          $timeout();
+      });
+    }
+
+    main.update = function () {
+      firebase.database().ref(`/posts/${key}`)
+        .update({"users": main.users, "message": main.message, "images": main.images, "timestamp": main.timestamp})
+        .then(() => {
+          main.users = '';
+          main.message = '';
+          main.images = '';
+          main.timestamp = '';
+          $timeout();
+      })
     }
 
     main.delete = function (arg) {
-      console.log('DELETE PRESSED');
       return firebase.database().ref(`posts/${arg}`)
         .set(null);
     }
 
+    main.edit = function (id, posts) {
+      main.users = posts.users;
+      main.message = posts.message;
+      main.images = posts.images;
+      main.timestamp = posts.timestamp;
+      key = id;
+      editing = true;
+    }
+
   });
 
+  // .controller('authCtrl', function(){
 
-// <div ng-repeat="posts in main.data">
-//   <ul>
-//     <li>{{posts.users}}</li>
-//     <li>{{posts.message}}</li>
-//     <li>{{posts.timestamp}}</li>
-//     <li><img src="{{posts.images}}"></li>
-//     <li><button type="click" ng-click="main.delete(votes.$key)">Delete</button></li>
-//   </ul>
-// </div>
+  // })
 
-  // board.createNewPin = function () {
-  //   UserProfileFact.createPin(board.newPin);
-  //   $timeout (() => {
-  //     location.reload()
-  //   }, 1000);
-  // }
-  // <form>
-  //   <input type="text"  placeholder="Title of Pin" ng-model="board.newPin.title"/>
-  //   <input type="text" placeholder="Url of Image" ng-model="board.newPin.url"/>
-  //   <input type="submit" class="btn btn-info" value="Save" ng-click="board.createNewPin()"
-  //   onclick="this.disabled=true;this.form.submit();"/>
-  //   <input type="submit" class="btn btn-danger" value="Cancel" data-dismiss="modal"/>
-  // </form>
+
+// Auth Controller
+//   app.controller('AuthCtrl', function (authFact) {
+//     const auth = this;
+//   auth.login = function() {
+//     console.log("fire login func from AuthCtrl", auth.email, auth.password);
+//     authFact.login(auth.email, auth.password)
+//   }
+//   auth.register = function() {
+//     authFact.register(auth.email, auth.password)
+//   }
+// })
+
+// Auth Factory
+// "use strict";
+// app.factory("authFact", function ($http, $location, $timeout) {
+//   let currentuser = null
+//     firebase.auth().onAuthStateChanged(function(user) {
+//       console.log("fire on state of change");
+//       if(user) {
+//         currentuser = user
+//         $location.path("/profile");
+//       } else {
+//         currentuser = null
+//         $location.path('/');
+//       }
+
+//     });
+
+//     return {
+//       register(email, password){
+//         firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+//           // Handle Errors here.
+//           console.log("regerror", error.message);
+//           var errorCode = error.code;
+//           var errorMessage = error.message;
+//           // ...
+//         });
+//       },
+//       login(email, password){
+//         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+//           // Handle Errors here.
+//           console.log("loginerror", error.message);
+//           var errorCode = error.code;
+//           var errorMessage = error.message;
+//           // ...
+//         });
+//       },
+//       getUser() {
+//         return currentuser
+//       }
+//     }
+//   });
