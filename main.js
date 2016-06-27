@@ -1,5 +1,4 @@
-const app = angular.module('app', ['angular.filter'])
-
+const app = angular.module('app', ['angular.filter', 'ngRoute', 'ui.bootstrap'])
   .config(() => {
     firebase.initializeApp({
       apiKey: "AIzaSyDRs3Yo29-47uD9aIMYsUxltGbjI82Rn08",
@@ -8,9 +7,3 @@ const app = angular.module('app', ['angular.filter'])
       storageBucket: "ae-fe-capstone.appspot.com",
     });
   })
-
-  .controller('MainCtrl', function ($scope, $timeout) {
-    const main = this;
-
-    main.heading = "Working Title";
-  });

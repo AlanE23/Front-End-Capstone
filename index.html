@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="">
+  <title>myFacester</title>
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
     <div ng-app="app">
-      <div ng-controller="MainCtrl as main">
-        <h1>{{main.heading}}</h1>
+      <div ng-view></div>
+    </div> <!-- ng-app -->
 
-      </div>
-    </div>
+    <!-- Dependencies -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
@@ -20,6 +20,14 @@
     <script src="lib/angular-route/angular-route.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/firebase/firebase.js"></script>
+
+    <!-- My js files -->
     <script src="main.js"></script>
+    <script src="config.js"></script>
+    <script src="auth/authCtrl.js"></script>
+    <script src="auth/authFactory.js"></script>
+    <script src="myFacester/mainCtrl.js"></script>
+    <script src="myFacester/mainFactory.js"></script>
+    <script src="myFacester/uprofileCtrl.js"></script>
   </body>
 </html>
