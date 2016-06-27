@@ -1,0 +1,50 @@
+<!-- Modal for creating new posts -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Post</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- <h6>{{main.handle}}</h6> -->
+          <input type="text" ng-model="main.message" placeholder="New Message">
+          <input type="text" ng-model="main.images" placeholder="image url">
+          <input type="file" accept="image/*" />
+          <input type="text" ng-model="main.timestamp" placeholder="timestamp">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button ng-controller="MainCtrl as main" ng-click="main.submit()" class="btn btn-primary" data-dismiss="modal">Submit Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" ng-controller="MainCtrl as main" ng-click="main.add()" data-toggle="modal" data-target="#myModal">
+  Add New Post
+</button>
+
+<!-- Logout Button -->
+<button type="button" class="btn btn-danger btn-lg" ng-controller="AuthCtrl as auth" ng-click="auth.logoutUser()">
+  Logout
+</button>
+
+<h1>{{main.heading}}</h1>
+<div class="row">
+  <div ng-repeat="(id, posts) in main.data" class="col-md-3">
+    <ul>
+      <li>{{posts.handle}}</li>
+      <li>{{posts.message}}</li>
+      <li>{{posts.timestamp}}</li>
+      <li><img ng-src="{{posts.images}}" class="pics"></li>
+      <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal">Edit</button></li>
+      <li><button type="click" ng-click="main.delete(id)">Delete</button></li>
+    </ul>
+  </div>
+</div>
+
+

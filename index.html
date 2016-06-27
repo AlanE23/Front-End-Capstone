@@ -8,61 +8,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
   <body>
-    <div class="container-fluid" id="mainBody">
-      <div ng-app="app">
-        <div ng-controller="MainCtrl as main">
+    <div ng-app="app">
+      <div ng-view></div>
+    </div> <!-- ng-app -->
 
-          <!-- Modal for creating new posts -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Create New Post</h4>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <input type="text" ng-model="main.users" placeholder="user name">
-                    <input type="text" ng-model="main.message" placeholder="New Message">
-                    <input type="text" ng-model="main.images" placeholder="image url">
-                    <input type="text" ng-model="main.timestamp" placeholder="timestamp">
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button ng-click="main.submit()" class="btn btn-primary" data-dismiss="modal">Submit Post</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            Add New Post
-          </button>
-
-          <!-- Logout Button -->
-          <button type="button" class="btn btn-danger btn-lg">
-            Logout
-          </button>
-
-          <h1>{{main.heading}}</h1>
-          <div class="row">
-          <div ng-repeat="(id, posts) in main.data" class="col-md-4">
-            <ul>
-              <li>{{posts.users}}</li>
-              <li>{{posts.message}}</li>
-              <li>{{posts.timestamp}}</li>
-              <li><img ng-src="{{posts.images}}" class="pics"></li>
-              <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal">Edit</button></li>
-              <li><button type="click" ng-click="main.delete(id)">Delete</button></li>
-            </ul>
-          </div>
-          </div>
-
-        </div> <!-- main controller -->
-      </div> <!-- ng-app -->
-    </div>
+    <!-- Dependencies -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-filter/dist/angular-filter.min.js"></script>
@@ -70,6 +20,14 @@
     <script src="lib/angular-route/angular-route.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/firebase/firebase.js"></script>
+
+    <!-- My js files -->
     <script src="main.js"></script>
+    <script src="config.js"></script>
+    <script src="auth/authCtrl.js"></script>
+    <script src="auth/authFactory.js"></script>
+    <script src="myFacester/mainCtrl.js"></script>
+    <script src="myFacester/mainFactory.js"></script>
+    <script src="myFacester/uprofileCtrl.js"></script>
   </body>
 </html>
