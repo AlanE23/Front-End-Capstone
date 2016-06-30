@@ -4,20 +4,20 @@ angular.module('app')
 
       let editing = false;
 
-      let key;
-
       main.data = null;
-
-      main.heading = "pseudo-uplifting phrase about this app";
-
-      main.currentUserName = firebase.auth().currentUser.email.split('@')[0];
-
-      main.imgUrls = [];
 
       firebase.database().ref('/posts').on('value', (arg) => {
         main.data = arg.val();
         $timeout();
       })
+
+      main.heading = "pseudo-uplifting phrase about this app";
+
+      main.currentAuth = firebase.auth().currentUser
+
+      main.currentUserName = main.currentAuth.email.split('@')[0];
+
+      // main.imgUrls = [];
 
       main.add = function () {
         main.message = '';
