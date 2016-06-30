@@ -44,14 +44,14 @@
 <div class="row">
   <div ng-repeat="(id, posts) in main.data" class="col-md-4">
     <ul>
-      <li><h4>{{posts.handle}}</h4></li>
+      <li><a href="#/userProfile/{{posts.users}}">{{posts.handle}}</a></li>
       <li>{{posts.message}}</li>
       <li>{{posts.timestamp}}</li>
       <li><img ng-src="{{posts.images}}" class="pics"></li>
 
-      <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal" ng-disabled="!(pins.currentAuth.uid === items.user)" ng-class="!(pins.currentAuth.uid === items.user) ? 'disabled' : ''">Edit</button></li>
+      <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal" ng-hide="!(main.currentAuth.uid === posts.users)" ng-class="!(main.currentAuth.uid === posts.users) ? 'disabled' : ''">Edit</button></li>
 
-      <li><button type="click" ng-click="main.delete(id)" ng-disabled="!(pins.currentAuth.uid === items.user)" ng-class="!(pins.currentAuth.uid === items.user) ? 'disabled' : ''">Delete</button></li>
+      <li><button type="click" ng-click="main.delete(id)" ng-hide="!(main.currentAuth.uid === posts.users)" ng-class="!(main.currentAuth.uid === posts.users) ? 'disabled' : ''">Delete</button></li>
     </ul>
   </div>
 </div>

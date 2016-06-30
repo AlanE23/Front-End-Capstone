@@ -17,9 +17,9 @@ app.config(($routeProvider) =>
         }
       }
     })
-    .when ('/userProfile/:key', { // '/:id/userProfile'
+    .when ('/userProfile/:users', { // '/:id/userProfile'
       controller: 'UProfileCtrl',
-      controllerAs: 'uprofile',
+      controllerAs: 'profile',
       templateUrl: 'myFacester/userProfile.html',
       resolve: {
         function ($location) {
