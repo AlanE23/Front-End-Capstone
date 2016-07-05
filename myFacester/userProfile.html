@@ -8,13 +8,12 @@
       </div>
       <div class="modal-body">
         <form>
-          <!-- <h6>{{main.handle}}</h6> -->
+          <h3 ng-controller="MainCtrl as main">{{main.currentUserName}}</h3>
           <input type="text" ng-model="main.message" placeholder="New Message">
-          <input type="text" ng-model="main.images" placeholder="image url">
           <input type="file" accept="image/*" />
           <input type="text" ng-model="main.timestamp" placeholder="timestamp">
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
             <button ng-controller="MainCtrl as main" ng-click="main.submit()" class="btn btn-primary" data-dismiss="modal">Submit Post</button>
           </div>
         </form>
@@ -23,28 +22,62 @@
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" ng-controller="MainCtrl as main" ng-click="main.add()" data-toggle="modal" data-target="#myModal">
-  Add New Post
-</button>
+<div class='nav container'>
+  <div clas="row">
+    <div class="guten col-sm-9">
+      <img src="img/guten.jpg" class="guten-img">
+    </div>
 
-<!-- Logout Button -->
-<button type="button" class="btn btn-danger btn-lg" ng-controller="AuthCtrl as auth" ng-click="auth.logoutUser()">
-  Logout
-</button>
+    <div class='col-sm-3 buttons'>
 
-<h1>{{profile.heading}}</h1>
-<div class="row">
-  <div ng-repeat="(id, posts) in profile.data" class="col-md-3">
-    <ul>
-      <li>{{posts.handle}}</li>
-      <li>{{posts.message}}</li>
-      <li>{{posts.timestamp}}</li>
-      <li><img ng-src="{{posts.images}}" class="pics"></li>
-      <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal">Edit</button></li>
-      <li><button type="click" ng-click="main.delete(id)">Delete</button></li>
-    </ul>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-lg nav-button" ng-click="main.add()" data-toggle="modal" data-target="#myModal" ng-controller="MainCtrl as main">
+        Add New Post
+      </button>
+
+      <!-- Logout Button -->
+      <button type="button" class="btn btn-lg nav-button" ng-controller="AuthCtrl as auth" ng-click="auth.logoutUser()">
+        Logout
+      </button>
+
+      <h3 ng-controller="MainCtrl as main">Logged in as {{main.currentUserName}}</h3>
+
+    </div>
   </div>
 </div>
+
+<h1></h1>
+
+<div class="row">
+  <div ng-repeat="(id, posts) in profile.data" class="col-md-12 content">
+    <div class='content-style'>
+      <div><h3>{{posts.handle}}</h3></div>
+      <div><img ng-src="{{posts.images.url}}" class="pics"></div>
+      <div>{{posts.message}}</div>
+      <div>{{posts.timestamp}}</div>
+      <div><button type="click" ng-click="profile.edit(id, posts)" data-toggle="modal" data-target="#myModal" ng-hide="!(profile.currentAuth.uid === posts.users)" ng-class="!(profile.currentAuth.uid === posts.users) ? 'disabled' : ''">Edit</button></div>
+      <div><button type="click" ng-click="profile.delete(id)" ng-hide="!(profile.currentAuth.uid === posts.users)" ng-class="!(profile.currentAuth.uid === posts.users) ? 'disabled' : ''">Delete</button></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

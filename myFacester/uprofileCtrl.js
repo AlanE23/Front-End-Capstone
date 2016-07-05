@@ -6,11 +6,12 @@ angular.module('app')
 
     profile.data = null;
 
+    profile.currentAuth = firebase.auth().currentUser;
+
     firebase.database().ref('/posts').orderByChild('users').equalTo($routeParams.users)
       .on('value', arg => {
         profile.data = arg.val();
+        console.log('profile', profile.data)
         $timeout();
       })
-
-    profile.heading = "Testing";
   })

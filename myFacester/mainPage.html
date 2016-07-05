@@ -9,12 +9,12 @@
       <div class="modal-body">
         <form>
           <h3>{{main.currentUserName}}</h3>
-          <input type="text" ng-model="main.message" placeholder="New Message">
-          <input type="text" ng-model="main.images" placeholder="image url">
+          <!-- <input type="text" ng-model="main.message" placeholder="New Message" class="input-field"> -->
+          <textarea class="form-control" rows="4" ng-model="main.message" placeholder="New Message"></textarea>
           <input type="file" accept="image/*" />
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button ng-click="main.submit()" class="btn btn-primary" data-dismiss="modal">Submit Post</button>
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+            <button ng-click="main.submit()" class="btn" data-dismiss="modal">Submit Post</button>
           </div>
         </form>
       </div>
@@ -22,57 +22,59 @@
   </div>
 </div>
 
-<!-- User Profile -->
-<a type="submit" class="btn btn-info btn-lg" href="#/userProfile/:key">
-  View Your Profile
-</a>
+<div class='nav container'>
+  <div clas="row">
+    <div class="guten col-sm-9">
+      <img src="img/guten.jpg" class="guten-img">
+    </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" ng-click="main.add()" data-toggle="modal" data-target="#myModal">
-  Add New Post
-</button>
+    <div class='col-sm-3 buttons'>
 
-<!-- Logout Button -->
-<button type="button" class="btn btn-danger btn-lg" ng-controller="AuthCtrl as auth" ng-click="auth.logoutUser()">
-  Logout
-</button>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-lg nav-button" ng-click="main.add()" data-toggle="modal" data-target="#myModal">
+        Add New Post
+      </button>
 
-<h1>{{main.heading}}</h1>
+      <!-- Logout Button -->
+      <button type="button" class="btn btn-lg nav-button" ng-controller="AuthCtrl as auth" ng-click="auth.logoutUser()">
+        Logout
+      </button>
 
-<h3>Logged in as {{main.currentUserName}}</h3>
+      <h3>Logged in as {{main.currentUserName}}</h3>
 
-<div class="row">
-  <div ng-repeat="(id, posts) in main.data" class="col-md-4">
-    <ul>
-      <li><a href="#/userProfile/{{posts.users}}">{{posts.handle}}</a></li>
-      <li>{{posts.message}}</li>
-      <li>{{posts.timestamp}}</li>
-      <li><img ng-src="{{posts.images}}" class="pics"></li>
-
-      <li><button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal" ng-hide="!(main.currentAuth.uid === posts.users)" ng-class="!(main.currentAuth.uid === posts.users) ? 'disabled' : ''">Edit</button></li>
-
-      <li><button type="click" ng-click="main.delete(id)" ng-hide="!(main.currentAuth.uid === posts.users)" ng-class="!(main.currentAuth.uid === posts.users) ? 'disabled' : ''">Delete</button></li>
-    </ul>
+    </div>
   </div>
 </div>
 
+<div class="container content-background">
+  <div class="col-sm-2 filler">
+  </div>
 
-<!-- <div ng-app="app">
-      <div ng-controller="UploadCtrl as up">
-        <h1>{{up.heading}}</h1>
-        <form ng-submit="up.submit()">
-          <input type="file" accept="image/*" />
-          <input type="submit" value="Upload Now!" />
-        </form>
-        <img ng-src="{{url}}" ng-repeat="url in up.photoURLs" />
+  <div class="foreground col-sm-8">
+
+    <h1>{{main.heading}}</h1>
+
+    <div class="row">
+      <div ng-repeat="(id, posts) in main.data" class="col-sm-12 content">
+        <div class='content-style'>
+          <div><h3><a href="#/userProfile/{{posts.users}}">{{posts.handle}}</a></h3></div>
+          <div><img ng-src="{{posts.images.url}}" class="pics"></div>
+          <div>{{posts.message}}</div>
+          <div>{{posts.timestamp}}</div>
+          <div class='row'>
+            <p>
+              <button type="click" ng-click="main.edit(id, posts)" data-toggle="modal" data-target="#myModal" ng-hide="!(main.currentAuth.uid === posts.users)" ng-class="!(main.currentAuth.uid === posts.users) ? 'disabled' : ''" class='eD-buttons'>Edit</button>
+
+              <button type="click" ng-click="main.delete(id)" ng-hide="!(main.currentAuth.uid === posts.users)" ng-class="!(main.currentAuth.uid === posts.users) ? 'disabled' : ''" class='eD-buttons'>Delete</button>
+            </p>
+          </div>
+        </div>
       </div>
-    </div> -->
-
-
-
-
-
-
+    </div>
+  </div>
+  <div class="col-sm-2 filler">
+  </div>
+</div>
 
 
 

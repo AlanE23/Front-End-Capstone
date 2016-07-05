@@ -1,4 +1,71 @@
-.pics {
-  max-width: 250px;
-  max-height: 250px;
+/* Auth Page */
+
+.login-header {
+  margin: 0;
+  width: 100%;
 }
+
+.guten-img {
+  margin: .75em 0;
+}
+
+.intro {
+  text-align: left;
+}
+
+/* Main Page */
+
+.pics {
+  max-width: 500px;
+}
+
+.nav {
+  background: lightgrey;
+  margin: 0;
+  width: 100%;
+}
+
+.buttons {
+  vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+}
+
+.content {
+  text-align: center;
+}
+
+.nav-button {
+  background: black;
+  color: beige;
+}
+
+.content-background {
+  background: url("../img/background.jpg") black;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+.filler {
+  opacity: 0;
+}
+
+.foreground {
+  background: white;
+}
+
+.eD-buttons {
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+
+
