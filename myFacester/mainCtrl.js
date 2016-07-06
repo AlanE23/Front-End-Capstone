@@ -15,9 +15,11 @@ angular.module('app')
 
       main.heading = "Upload your thoughts, then download everyone else's";
 
-      main.currentAuth = firebase.auth().currentUser
+      main.currentAuth = firebase.auth().currentUser;
 
       main.currentUserName = main.currentAuth.email.split('@')[0];
+
+      main.id = main.currentAuth.uid;
 
       main.add = function () {
         main.message = '';
@@ -77,6 +79,8 @@ angular.module('app')
 
       main.edit = function (id, posts) {
         main.message = posts.message;
+        main.images = posts.images.url;
+        main.timestamp = posts.timestamp;
         key = id;
         editing = true;
       }

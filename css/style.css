@@ -1,3 +1,13 @@
+/* main body */
+.mainbody {
+  background: url("../img/background.jpg") black;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  min-height: 1000px;
+}
+
 /* Auth Page */
 
 .login-header {
@@ -20,7 +30,7 @@
 }
 
 .nav {
-  background: lightgrey;
+  background: rgba(143, 143, 143, .75);
   margin: 0;
   width: 100%;
 }
@@ -40,24 +50,39 @@
   color: beige;
 }
 
-.content-background {
-  background: url("../img/background.jpg") black;
-  background-size: cover;
-  text-align: center;
-  margin: 0;
-  width: 100%;
-}
-
 .filler {
   opacity: 0;
 }
 
-.foreground {
-  background: white;
+.guten {
+  text-align: left;
 }
 
-.eD-buttons {
-  display: inline-block;
+.heading {
+  color: beige;
+}
+
+.content-style {
+  border: solid grey;
+  border-radius: 2em;
+  background: rgba(255, 255, 255, .5);
+  margin: .5em;
+}
+
+.message {
+  color: white;
+}
+
+.timestamp {
+  color: black;
+}
+
+.handle {
+  color: white;
+}
+
+.handle:hover {
+  color: yellow;
 }
 
 
