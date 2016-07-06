@@ -1,4 +1,96 @@
-.pics {
-  max-width: 250px;
-  max-height: 250px;
+/* main body */
+.mainbody {
+  background: url("../img/background.jpg") black;
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  min-height: 1000px;
 }
+
+/* Auth Page */
+
+.login-header {
+  margin: 0;
+  width: 100%;
+}
+
+.guten-img {
+  margin: .75em 0;
+}
+
+.intro {
+  text-align: left;
+}
+
+/* Main Page */
+
+.pics {
+  max-width: 500px;
+}
+
+.nav {
+  background: rgba(143, 143, 143, .75);
+  margin: 0;
+  width: 100%;
+}
+
+.buttons {
+  vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+}
+
+.content {
+  text-align: center;
+}
+
+.nav-button {
+  background: black;
+  color: beige;
+}
+
+.filler {
+  opacity: 0;
+}
+
+.guten {
+  text-align: left;
+}
+
+.heading {
+  color: beige;
+}
+
+.content-style {
+  border: solid grey;
+  border-radius: 2em;
+  background: rgba(255, 255, 255, .5);
+  margin: .5em;
+}
+
+.message {
+  color: white;
+}
+
+.timestamp {
+  color: black;
+}
+
+.handle {
+  color: white;
+}
+
+.handle:hover {
+  color: yellow;
+}
+
+
+
+
+
+
+
+
+
+

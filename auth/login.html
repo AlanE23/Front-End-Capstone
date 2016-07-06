@@ -1,6 +1,18 @@
 <div class="jumbotron">
-  <h1>Attractive Heading Here</h1>
+  <div class='container login-header'>
+    <div class='row'>
+      <div class="intro col-sm-9">
+        <h1>Welcome to Guten</h1>
+        <h4>Upload your thoughts and pictures</h4>
+        <h4>Then download everyone else's</h4>
+      </div>
+      <div class="guten col-sm-3">
+        <img src="img/guten.jpg" class="guten-img">
+      </div>
+    </div>
+  </div>
 </div>
+
 
 
 <div class="container">
@@ -35,22 +47,9 @@
           placeholder="Type username/handle here">
       </div> -->
       <div>
-        <button class="btn btn-success" type="button" ng-click="auth.loginUser(userEmail, userPassword)">Log In</button>
-        <button class="btn btn-primary" type="button" ng-click="auth.registerUser(userEmail, userPassword, username)">Register</button>
+        <button class="btn login" type="button" ng-click="auth.loginUser(userEmail, userPassword)">Log In</button>
+        <button class="btn register" type="button" ng-click="auth.registerUser(userEmail, userPassword, username)">Register</button>
       </div>
     </form>
   </div>  <!-- Row  -->
 </div> <!-- Container  -->
-
-<!--
-        <div>
-          <label>Handle</label>
-          <input type="text" placeholder="User Handle">
-        </div>
-        <div>
-          <label>Upload an Avatar</label>
-          <input type="file" accept="image/*" />
-        </div>
-
-
-type="text" name="username" id="username" ng-model="auth.user.username" -->
